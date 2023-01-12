@@ -1,0 +1,4 @@
+name: Grapple
+version: '${version}'
+main: net.studiorily.grapple.Grapple
+api-version: 1.19
