@@ -19,20 +19,19 @@ public class GrappleItem implements Listener {
             return;
         }
 
-        if(event.getState() != PlayerFishEvent.State.IN_GROUND) {
-            return;
-        }
-
         if(hook.getState() != FishHook.HookState.UNHOOKED) {
             return;
         }
 
-        Vector hookVector = hook.getLocation().toVector();
-        Vector playerVector = player.getLocation().toVector();
+        PlayerFishEvent.State state = event.getState();
+        if(state == PlayerFishEvent.State.IN_GROUND) {
+            Vector hookVector = hook.getLocation().toVector();
+            Vector playerVector = player.getLocation().toVector();
 
-        Vector vector = hookVector.subtract(playerVector);
+            Vector vector = hookVector.subtract(playerVector);
 
-        player.setVelocity(vector);
-        player.getWorld().playSound(player.getLocation(), "minecraft:entity.zombie.infect", SoundCategory.PLAYERS, 1.0F, 2.0F);
+            player.setVelocity(vector);
+            player.getWorld().playSound(player.getLocation(), "minecraft:entity.zombie.infect", SoundCategory.PLAYERS, 1.0F, 2.0F);
+        }
     }
 }

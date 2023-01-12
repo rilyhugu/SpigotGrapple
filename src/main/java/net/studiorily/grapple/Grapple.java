@@ -1,21 +1,18 @@
 package net.studiorily.grapple;
 
-import org.bukkit.plugin.Plugin;
+import net.studiorily.grapple.command.GrappleCommand;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Grapple extends JavaPlugin {
-    public static Plugin plugin;
-
     @Override
     public void onEnable() {
-        this.getServer().getPluginManager().registerEvents(new GrappleItem(), this);
+        Bukkit.getServer().getPluginManager().registerEvents(new GrappleItem(), this);
+
+        getCommand("grapple").setExecutor(new GrappleCommand());
     }
 
     @Override
     public void onDisable() {
-    }
-
-    public static Plugin getPlugin() {
-        return this.plugin;
     }
 }
